@@ -9,10 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace OtoparkOtomasyonu.v2
 {
     public partial class FormGirisYap : Form
     {
+        Login deneme = new Login();
+        
+        /*
         string yetkitur=null;
         bool yetkikontrol=false;
         //kontrol
@@ -54,6 +58,7 @@ namespace OtoparkOtomasyonu.v2
         }
         public void sqlYetkiKontrol()
         {
+            
             query = "SELECT yetkiID from CalisanBilgisi WHERE tckimlikno=@tckimlikno";
             command = new SqlCommand(query,connection);
             command.Parameters.AddWithValue("@tckimlikno", textBoxtc.Text);
@@ -64,7 +69,8 @@ namespace OtoparkOtomasyonu.v2
             }
             connection.Close();
         }
-        
+        */
+
         public FormGirisYap()
         {
             InitializeComponent();
@@ -72,6 +78,7 @@ namespace OtoparkOtomasyonu.v2
 
         private void FormGirisYap_Load(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -96,9 +103,16 @@ namespace OtoparkOtomasyonu.v2
                 e.Handled = false;
             }
         }
+            
 
         private void buttonGirisYAP_Click(object sender, EventArgs e)
         {
+            deneme.SqlConnection();
+            deneme.sqlYetkiKontrol(textBoxtc.Text.ToString());
+            deneme.AdminLogin(textBoxtc.Text.ToString(),textBoxsifre.Text.ToString(),this);
+            
+            /*
+
                 SqlConnection();
                 sqlYetkiKontrol();
             if (yetkitur == "2")
@@ -131,7 +145,9 @@ namespace OtoparkOtomasyonu.v2
             {
                 MessageBox.Show("Hatalı giriş yaptınız veya kullanıcı kayıtlı değil");
             }
+            
             yetkitur = null;
+            */
         }
 
         private void button1_Click(object sender, EventArgs e)

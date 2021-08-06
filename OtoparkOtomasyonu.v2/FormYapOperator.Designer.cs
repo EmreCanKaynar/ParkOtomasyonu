@@ -78,7 +78,7 @@ namespace OtoparkOtomasyonu.v2
             this.buttonGirisYAP.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonGirisYAP.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGirisYAP.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonGirisYAP.Location = new System.Drawing.Point(377, 246);
+            this.buttonGirisYAP.Location = new System.Drawing.Point(377, 248);
             this.buttonGirisYAP.Name = "buttonGirisYAP";
             this.buttonGirisYAP.Size = new System.Drawing.Size(201, 47);
             this.buttonGirisYAP.TabIndex = 58;

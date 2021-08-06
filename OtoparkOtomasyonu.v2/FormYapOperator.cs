@@ -31,7 +31,10 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonGirisYAP_Click(object sender, EventArgs e)
         {
-
+            Login deneme = new Login();
+            deneme.SqlConnection();
+            deneme.sqlYetkiKontrol(textBoxtc.Text.ToString());
+            deneme.OperatorLogin(textBoxtc.Text.ToString(), textBoxsifre.Text.ToString(),this);
         }
 
         private void label6_Click(object sender, EventArgs e)
