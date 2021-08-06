@@ -31,6 +31,7 @@ namespace OtoparkOtomasyonu.v2
         static string connectionadress = "Data Source=OGZCNKYNR\\SQLEXPRESS;Initial Catalog=OtoparkOtomasyonu;Integrated Security=True";
         static SqlConnection connection;
         SqlCommand command;
+        // şifre küçük,büyük karakter, sayı ve noktalama kontrolü
        public static bool PasswordControl(string password)
         {
             bool hasUpperCase = false;
@@ -255,6 +256,7 @@ namespace OtoparkOtomasyonu.v2
                labelsifrekontrol.Visible= false;
                 sifrekontrol = true;
             }
+            errorProvider1.SetError(textBoxsifre,"Şifre küçük,büyük karakter ,sayı ve noktalama işareti içermelidir");
 
 
 
@@ -291,11 +293,11 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonKayıtOl_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(tckimlikkontrol.ToString() + telnokontrol.ToString() + adkontrol.ToString() + soyadkontrol.ToString() + emailkontrol.ToString() + sifrekontrol.ToString() + sifretekrarkontrol.ToString() + yetkikontrol.ToString());
+            MessageBox.Show( PasswordControl(textBoxsifre.Text.ToString()).ToString() +tckimlikkontrol.ToString() + telnokontrol.ToString() + adkontrol.ToString() + soyadkontrol.ToString() + emailkontrol.ToString() + sifrekontrol.ToString() + sifretekrarkontrol.ToString() + yetkikontrol.ToString());
             try
             {
                 SqlConnection();
-                if(tckimlikkontrol && telnokontrol & adkontrol && soyadkontrol && emailkontrol && sifrekontrol && sifretekrarkontrol && yetkikontrol)
+                if(PasswordControl(textBoxsifre.Text.ToString()) && tckimlikkontrol && telnokontrol & adkontrol && soyadkontrol && emailkontrol && sifrekontrol && sifretekrarkontrol && yetkikontrol)
                 {
                     SqlSignUp();
                     MessageBox.Show("Kayıt Olundu");
@@ -305,13 +307,20 @@ namespace OtoparkOtomasyonu.v2
                 }
                 else
                 {
-                    MessageBox.Show("Gerekli alanları doldurun.");
+                    
+                        if (!PasswordControl(textBoxsifre.Text.ToString())){
+                            MessageBox.Show("Küçük ,büyük karakter noktalama işareti ve sayı içeren bir şifreniz olmalı");
+                        }
+                    else
+                    {
+                        MessageBox.Show("Zorunlu alanları doldurunuz!");
+                    }
                 }
                 
             }
             catch
             {
-                MessageBox.Show("Hata : buttonKayitOl_Click");
+                MessageBox.Show("Hata : Tc kimilk nuamarası zaten mevcut");
             }
         }
 
@@ -348,7 +357,6 @@ namespace OtoparkOtomasyonu.v2
                 telnokontrol = false;
             }
         }
-
         private void textBoxtelno_KeyPress_1(object sender, KeyPressEventArgs e)
         {
 

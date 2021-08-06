@@ -61,7 +61,9 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxtc = new System.Windows.Forms.TextBox();
             this.textBoxtelno = new System.Windows.Forms.MaskedTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList1
@@ -385,6 +387,10 @@ namespace OtoparkOtomasyonu.v2
             this.comboBox1.Size = new System.Drawing.Size(121, 26);
             this.comboBox1.TabIndex = 56;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormKaydol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -418,6 +424,7 @@ namespace OtoparkOtomasyonu.v2
             this.Load += new System.EventHandler(this.FormKaydol_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,5 +461,6 @@ namespace OtoparkOtomasyonu.v2
         private System.Windows.Forms.TextBox textBoxtc;
         private System.Windows.Forms.MaskedTextBox textBoxtelno;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

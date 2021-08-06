@@ -123,6 +123,9 @@ namespace OtoparkOtomasyonu.v2
             else if(yetkitur == "1")
             {
                 MessageBox.Show("Bu kullanıcı 'OPERATOR' dür.Operatör girişine yönlendiriyorsunuz.");
+                FormYapOperator op = new FormYapOperator();
+                op.Show();
+                this.Hide();
             }
             else
             {

@@ -26,7 +26,10 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonOperator_Click(object sender, EventArgs e)
         {
-          
+            FormYapOperator op= new FormYapOperator();
+            op.Show();
+            this.Hide();
+            
         }
 
         private void buttonAdmin_Click(object sender, EventArgs e)
