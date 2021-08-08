@@ -52,9 +52,10 @@ namespace OtoparkOtomasyonu.v2
             this.buttonOperator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonOperator.ImageIndex = 1;
             this.buttonOperator.ImageList = this.ımageList1;
-            this.buttonOperator.Location = new System.Drawing.Point(375, 257);
+            this.buttonOperator.Location = new System.Drawing.Point(281, 209);
+            this.buttonOperator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOperator.Name = "buttonOperator";
-            this.buttonOperator.Size = new System.Drawing.Size(291, 80);
+            this.buttonOperator.Size = new System.Drawing.Size(218, 65);
             this.buttonOperator.TabIndex = 2;
             this.buttonOperator.Text = "      OPERATOR";
             this.buttonOperator.UseVisualStyleBackColor = false;
@@ -67,9 +68,10 @@ namespace OtoparkOtomasyonu.v2
             this.buttonAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAdmin.ImageKey = "admin.png";
             this.buttonAdmin.ImageList = this.ımageList1;
-            this.buttonAdmin.Location = new System.Drawing.Point(375, 136);
+            this.buttonAdmin.Location = new System.Drawing.Point(281, 115);
+            this.buttonAdmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdmin.Name = "buttonAdmin";
-            this.buttonAdmin.Size = new System.Drawing.Size(291, 80);
+            this.buttonAdmin.Size = new System.Drawing.Size(218, 65);
             this.buttonAdmin.TabIndex = 3;
             this.buttonAdmin.Text = "ADMIN";
             this.buttonAdmin.UseVisualStyleBackColor = false;
@@ -80,9 +82,10 @@ namespace OtoparkOtomasyonu.v2
             this.labelbaslik.AutoSize = true;
             this.labelbaslik.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelbaslik.Font = new System.Drawing.Font("Microsoft YaHei", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelbaslik.Location = new System.Drawing.Point(299, 23);
+            this.labelbaslik.Location = new System.Drawing.Point(224, 19);
+            this.labelbaslik.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelbaslik.Name = "labelbaslik";
-            this.labelbaslik.Size = new System.Drawing.Size(454, 44);
+            this.labelbaslik.Size = new System.Drawing.Size(369, 36);
             this.labelbaslik.TabIndex = 4;
             this.labelbaslik.Text = "OTOPARK OTOMASYONU";
             // 
@@ -92,9 +95,10 @@ namespace OtoparkOtomasyonu.v2
             this.linkKaydol.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.linkKaydol.ForeColor = System.Drawing.SystemColors.ControlText;
             this.linkKaydol.LinkColor = System.Drawing.Color.Black;
-            this.linkKaydol.Location = new System.Drawing.Point(439, 377);
+            this.linkKaydol.Location = new System.Drawing.Point(329, 306);
+            this.linkKaydol.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkKaydol.Name = "linkKaydol";
-            this.linkKaydol.Size = new System.Drawing.Size(175, 24);
+            this.linkKaydol.Size = new System.Drawing.Size(144, 19);
             this.linkKaydol.TabIndex = 5;
             this.linkKaydol.TabStop = true;
             this.linkKaydol.Text = "Hesabınız yok mu ?";
@@ -102,15 +106,16 @@ namespace OtoparkOtomasyonu.v2
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1109, 565);
+            this.ClientSize = new System.Drawing.Size(832, 459);
             this.Controls.Add(this.linkKaydol);
             this.Controls.Add(this.labelbaslik);
             this.Controls.Add(this.buttonOperator);
             this.Controls.Add(this.buttonAdmin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

@@ -30,8 +30,9 @@ namespace OtoparkOtomasyonu.v2
         string query;
         static string connectionadress = "Data Source=OGZCNKYNR\\SQLEXPRESS;Initial Catalog=OtoparkOtomasyonu;Integrated Security=True";
         static SqlConnection connection;
+
         SqlCommand command;
-        // şifre küçük,büyük karakter, sayı ve noktalama kontrolü
+        // şifre küçük,büyük karakter, sayı ve noktalama kontrolü   
        public static bool PasswordControl(string password)
         {
             bool hasUpperCase = false;

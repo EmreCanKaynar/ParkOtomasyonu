@@ -108,6 +108,35 @@ namespace OtoparkOtomasyonu.v2
         }
         public void OperatorLogin(string tckimlikno, string sifre,FormYapOperator op)
         {
+            switch (yetkitur)
+            {
+                case "2":
+                    MessageBox.Show("Bu kullanıcı 'ADMİN' dir. Admin Girişine Yönlendiriyorsunuz.");
+                    FormGirisYap g = new FormGirisYap();
+                    g.Show();
+                    op.Hide();
+                    break;
+                case "1":
+                    MessageBox.Show("Bu kullanıcı 'OPERATOR' dür.");
+                    sqlLogin(tckimlikno, sifre);
+                    if (kontroltcsifre == true)
+                    {
+                        MessageBox.Show("Giriş Başarılı");
+                        kontroltcsifre = false;
+                        //
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kullanıcı Adı ve Şifre hatalı");
+                    }
+
+                    break;
+                default:
+                    MessageBox.Show("Hatalı giriş yaptınız veya kullanıcı kayıtlı değil");
+                    break;
+
+            }
+            /*
             if (yetkitur == "2")
             {
                 MessageBox.Show("Bu kullanıcı 'ADMİN' dir. Admin Girişine Yönlendiriyorsunuz.");
@@ -137,7 +166,9 @@ namespace OtoparkOtomasyonu.v2
                 MessageBox.Show("Hatalı giriş yaptınız veya kullanıcı kayıtlı değil");
             }
             yetkitur = null;
+            */
 
         }
+            
     }
 }
