@@ -70,6 +70,12 @@
     <Compile Include="FormKaydol.Designer.cs">
       <DependentUpon>FormKaydol.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormOperAnasayfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOperAnasayfa.Designer.cs">
+      <DependentUpon>FormOperAnasayfa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormYapOperator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormKaydol.resx">
       <DependentUpon>FormKaydol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOperAnasayfa.resx">
+      <DependentUpon>FormOperAnasayfa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormYapOperator.resx">
       <DependentUpon>FormYapOperator.cs</DependentUpon>

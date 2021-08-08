@@ -39,7 +39,7 @@ namespace OtoparkOtomasyonu.v2
             connectionadress = "Data Source=OGZCNKYNR\\SQLEXPRESS;Initial Catalog=OtoparkOtomasyonu;Integrated Security=True";
         }
         /// <summary>
-        /// 
+        /// Sql bağlantısı için fonksiyon
         /// </summary>
         public void SqlConnection()
         {
@@ -97,7 +97,7 @@ namespace OtoparkOtomasyonu.v2
                     MessageBox.Show("Bu kullanıcı 'OPERATOR' dür.Operatör girişine yönlendiriyorsunuz.");
                     FormYapOperator op = new FormYapOperator();
                     op.Show();
-                    this.Hide();
+                    ad.Hide();
                     break;
                 default:
                     MessageBox.Show("Hatalı giriş yaptınız veya kullanıcı kayıtlı değil");
@@ -121,7 +121,10 @@ namespace OtoparkOtomasyonu.v2
                     sqlLogin(tckimlikno, sifre);
                     if (kontroltcsifre == true)
                     {
+                        FormOperAnasayfa opanasayfa = new FormOperAnasayfa();
                         MessageBox.Show("Giriş Başarılı");
+                        opanasayfa.Show();
+                        op.Hide();
                         kontroltcsifre = false;
                         //
                     }
