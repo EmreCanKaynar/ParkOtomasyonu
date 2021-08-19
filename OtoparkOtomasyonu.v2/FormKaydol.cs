@@ -302,9 +302,20 @@ namespace OtoparkOtomasyonu.v2
                 {
                     SqlSignUp();
                     MessageBox.Show("Kayıt Olundu");
-                    FormGirisYap girisyap = new FormGirisYap();
-                    girisyap.Show();
-                    this.Hide();
+                    if(YetkiKontrol() == 2)
+                    {
+                        FormGirisYap girisyap = new FormGirisYap();
+                        girisyap.Show();
+                        this.Hide();
+                    }
+                    else if (YetkiKontrol() == 1)
+                    {
+                        FormYapOperator op = new FormYapOperator();
+                        op.Show();
+                        this.Hide();
+                    }
+
+                   
                 }
                 else
                 {

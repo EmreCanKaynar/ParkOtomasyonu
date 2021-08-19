@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAracKayit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAracKayit.Designer.cs">
+      <DependentUpon>FormAracKayit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Veritabani.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +77,12 @@
     <Compile Include="FormKaydol.Designer.cs">
       <DependentUpon>FormKaydol.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMusteriKayıt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMusteriKayıt.Designer.cs">
+      <DependentUpon>FormMusteriKayıt.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormOperAnasayfa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +98,11 @@
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="OtoparkOtomasyonuDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OtoparkOtomasyonuDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -93,17 +111,26 @@
     <EmbeddedResource Include="FormAdminAnasayfa.resx">
       <DependentUpon>FormAdminAnasayfa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAracKayit.resx">
+      <DependentUpon>FormAracKayit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormGirisYap.resx">
       <DependentUpon>FormGirisYap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKaydol.resx">
       <DependentUpon>FormKaydol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMusteriKayıt.resx">
+      <DependentUpon>FormMusteriKayıt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormOperAnasayfa.resx">
       <DependentUpon>FormOperAnasayfa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormYapOperator.resx">
       <DependentUpon>FormYapOperator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,6 +141,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="OtoparkOtomasyonuDataSet.xsc">
+      <DependentUpon>OtoparkOtomasyonuDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OtoparkOtomasyonuDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OtoparkOtomasyonuDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OtoparkOtomasyonuDataSet.xss">
+      <DependentUpon>OtoparkOtomasyonuDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

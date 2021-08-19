@@ -88,6 +88,7 @@ namespace OtoparkOtomasyonu.v2
                         kontroltcsifre = false;
                         FormAdminAnasayfa admin = new FormAdminAnasayfa();
                         admin.Show();
+                        ad.Hide();
                     }
                     else
                         MessageBox.Show("Kullanıcı Adı ve Şifre hatalı");
@@ -106,6 +107,25 @@ namespace OtoparkOtomasyonu.v2
             
             yetkitur = null;
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Login
+            // 
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public void OperatorLogin(string tckimlikno, string sifre,FormYapOperator op)
         {
             switch (yetkitur)
