@@ -61,22 +61,20 @@ namespace OtoparkOtomasyonu.v2
         }
         public int DataBaseSearchId(ComboBox box,string sorgu,string sutun)
         {
-            int value=0;
-            
-                if(box.SelectedIndex!=-1)
+
+            int value=404;
+            if (box.SelectedIndex!=-1)
                 using (SqlCommand command = DataBaseCommand(sorgu))
                 {
                     command.Parameters.Add("@" + sutun, SqlDbType.NVarChar).Value = box.SelectedItem.ToString();
                     command.Connection.Open();
                     reader = command.ExecuteReader();
-                    value = (reader.Read()) ? reader.GetInt32(0) : 0;
+                    value = (reader.Read()) ? reader.GetInt32(0) :0;
                 }
             else
             {
                 MessageBox.Show("Hata : Zorunlu Alanları Doldurunuz : " + box.Name.ToString());
             }
-            
-            
             return value;
         }
         public int DataBaseSearchId(TextBox box, string sorgu, string sutun)
@@ -99,9 +97,30 @@ namespace OtoparkOtomasyonu.v2
         }
         public void DeleteDataFromDataBase(TextBox box,string sutunAdi)
         {
-            using (SqlCommand command = DataBaseCommand(deletionQueryPlaka))
+            try
             {
-                command.Parameters.Add("@"+sutunAdi, SqlDbType.NVarChar).Value = box.Text.ToString();
+                using (SqlCommand command = DataBaseCommand(deletionQueryPlaka))
+                {
+                    command.Parameters.Add("@" + sutunAdi, SqlDbType.NVarChar).Value = box.Text.ToString();
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    command.Connection.Close();
+                }
+            }
+            catch(Exception e)
+            {
+                if(e is SqlException)
+                {
+                    MessageBox.Show("hata : Bu plaka bir müşteriye kayıtlıdır. Silinemez");
+                }
+            }
+           
+        }
+        public void DeleteDataFromDataBase(TextBox box,string sorgu,string sutunAdi)
+        {
+            using (SqlCommand command = DataBaseCommand(sorgu))
+            {
+                command.Parameters.Add("@" + sutunAdi, SqlDbType.NVarChar).Value = box.Text.ToString();
                 command.Connection.Open();
                 command.ExecuteNonQuery();
                 command.Connection.Close();
@@ -127,6 +146,35 @@ namespace OtoparkOtomasyonu.v2
                     if (ex is SqlException) { MessageBox.Show("hata : plaka kayıtlı veya Zorunlu Alan boş!"); }
 
                 }
+            }
+        }
+        public void UpdateDataFromDataBase(ArrayList columnNames, ArrayList values,string sorgu)
+        {
+            using (SqlCommand command = DataBaseCommand(sorgu))
+            {
+                try
+                {
+                    for (int i = 0; i < columnNames.Count; i++)
+                    {
+                        command.Parameters.AddWithValue("@" + columnNames[i], values[i]);
+                    }
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    command.Connection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    if (ex is SqlException) { MessageBox.Show("hata : plaka kayıtlı veya Zorunlu Alan boş!"); }
+
+                }
+            }
+        }
+        public void AddDataToDataBase(string sorgu)
+        {
+            using (SqlCommand command = DataBaseCommand(sorgu)) {
+               
+
             }
         }
     }

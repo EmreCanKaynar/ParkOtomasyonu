@@ -15,49 +15,45 @@ namespace OtoparkOtomasyonu.v2
     public partial class FormAracKayit : Form
     {
         Veritabani db = new Veritabani();
+        SorguSutun ss = new SorguSutun();
         DataTable table;
-      
-        string sorguAracBilgileri = "SELECT aracID,plaka,renkID,markaID,modelID,yakitID,tipID FROM AracBilgisi";
-        string sorguAracKayit = "INSERT INTO AracBilgisi(plaka,renkID,markaID,modelID,yakitID,tipID) VALUES(@plaka,@renkID,@markaID,@modelID,@yakitID,@tipID)";
-        string sorgumarka =     "SELECT markaID FROM AracMarka WHERE marka=@marka";
-        string sorgurenk =      "SELECT renkID FROM Renkler WHERE renk = @renk";
-        string sorgumodel =     "SELECT modelID FROM AracModel WHERE model=@model";
-        string sorguyakit =     "SELECT yakitID FROM YakitTur WHERE yakit=@yakit";
-        string sorgutip =       "SELECT tipID FROM AracTip WHERE tip=@tip";
-        string sutunAdiPlaka = "plaka";
-        string sutunAdiMarka = "marka";
-        string sutunAdiRenk = "renk";
-        string sutunAdiModel = "model";
-        string sutunAdiTip = "tip";
-        string sutunAdiYakit = "yakit";
-        // DataGriddeKullanılacakSorgu ( idler yok)
-        string sorguDataGridView = "SELECT AracBilgisi.aracID, AracBilgisi.plaka, Renkler.renk, AracMarka.marka, AracModel.model, YakitTur.yakit, AracTip.tip FROM AracBilgisi " +
-                         "INNER JOIN Renkler   ON AracBilgisi.renkID  = Renkler.renkID " +
-                          "INNER JOIN AracMarka ON AracBilgisi.markaID = AracMarka.markaID " +
-                           "INNER JOIN AracModel ON AracBilgisi.modelID = AracModel.modelID " +
-                            "INNER JOIN YakitTur  ON AracBilgisi.yakitID = YakitTur.yakitID " +
-                             "INNER JOIN AracTip   ON AracBilgisi.tipID   = AracTip.tipID " +
-                              " ORDER BY aracID DESC";
-
 
         // MarkaComboBox
         string sorgu;
         string sutun;
-        int value;
+        byte guncellemeKontrolu=0;
+        /// <summary>
+        /// Boxlardaki seçili itemi string olarak geri döndrürür
+        /// </summary>
+        /// <param name="box"></param>
+        /// <returns></returns>
         string BringDatasFromBoxes(ComboBox box) => box.SelectedItem.ToString();
+        /// <summary>
+        /// Boxlardaki seçili itemi string olarak geri döndrürür
+        /// </summary>
+        /// <param name="box"></param>
+        /// <returns></returns>
         string BringDatasFromBoxes(TextBox box) => box.Text.ToString();
-        bool aracKayitKosullari(ArrayList list)
+        /// <summary>
+        /// boxlarda item seçilimi değilmi kontrolünü sağlar ve ona göre bir bool değer döndürür
+        /// </summary>
+        /// <returns></returns>
+        bool aracKayitKosullari()
         {
-            bool value = true;
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].Equals(null))
-                {
-                    value = false;
-                }
-            }
+            bool value = string.IsNullOrEmpty(textBox2.Text.ToString()) ||
+                         comboBoxYakit.SelectedIndex   == -1 ||
+                         comboBoxTip.SelectedIndex     == -1 ||
+                         comboBoxModel.SelectedIndex   == -1 ||
+                         comboBoxMarka.SelectedIndex   == -1 ||
+                         comboBoxRenkler.SelectedIndex == -1;
+             
             return value;
         }
+        /// <summary>
+        /// sutun adlarını bir arrayliste atama işlemi yapar ve liste döndürür
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         ArrayList TableColumnsName(DataTable table)
         {
             ArrayList list = new ArrayList();
@@ -65,35 +61,49 @@ namespace OtoparkOtomasyonu.v2
                 list.Add(table.Columns[i].ColumnName.ToString());
             return list;
         }
+        /// <summary>
+        /// bir arrayliste comboboxlardaki değerleri atama işlemi yapar ve liste döndürür
+        /// </summary>
+        /// <returns></returns>
         ArrayList ListValues()
         {
             ArrayList list = new ArrayList();
             list.Add(BringDatasFromBoxes(this.textBox1));
             list.Add(BringDatasFromBoxes(this.textBox2));
-            list.Add((int)db.DataBaseSearchId(this.comboBoxRenkler,sorgurenk,sutunAdiRenk));
-            list.Add(db.DataBaseSearchId(this.comboBoxMarka, sorgumarka,sutunAdiMarka));
-            list.Add(db.DataBaseSearchId(this.comboBoxModel,sorgumodel, sutunAdiModel));
-            list.Add(db.DataBaseSearchId(this.comboBoxYakit, sorguyakit, sutunAdiYakit));
-            list.Add(db.DataBaseSearchId(this.comboBoxTip, sorgutip, sutunAdiTip));
+            list.Add(db.DataBaseSearchId(this.comboBoxRenkler,ss.sorgurenk,ss.sutunAdiRenk));
+            list.Add(db.DataBaseSearchId(this.comboBoxMarka, ss.sorgumarka,ss.sutunAdiMarka));
+            list.Add(db.DataBaseSearchId(this.comboBoxModel, ss.sorgumodel, ss.sutunAdiModel));
+            list.Add(db.DataBaseSearchId(this.comboBoxYakit, ss.sorguyakit, ss.sutunAdiYakit));
+            list.Add(db.DataBaseSearchId(this.comboBoxTip, ss.sorgutip, ss.sutunAdiTip));
             return list;
         }
+        /// <summary>
+        /// seçili kaydı siler
+        /// </summary>
+        /// <param name="box"></param>
+        /// <param name="sutunAdi"></param>
         void aracKayitSil(TextBox box,string sutunAdi)
         {
             db.DeleteDataFromDataBase(box,sutunAdi);
         }
+        /// <summary>
+        /// araç kayıt ekleme işlemini yapar
+        /// </summary>
+        /// <param name="sorgu"></param>
         void aracKayitEkle(string sorgu)
         {
-            ArrayList columnNames = TableColumnsName(db.JustFillDataTable(sorguAracBilgileri));
-            ArrayList values = ListValues();
+          
             
-            if(String.IsNullOrEmpty(textBox2.Text))
+            if(aracKayitKosullari())
             {
-                MessageBox.Show("hata : Plaka girin");
+                MessageBox.Show("hata aracKayitKosul : Bütün alanlar doldurulmalıdır.");
             }
             else
             {
                 using(SqlCommand command = db.DataBaseCommand(sorgu))
                {
+                    ArrayList columnNames = TableColumnsName(db.JustFillDataTable(ss.sorguAracBilgileri));
+                    ArrayList values = ListValues();
                     try
                     {
                         for (int columnIndex = 0; columnIndex < columnNames.Count - 1; columnIndex++)
@@ -105,20 +115,34 @@ namespace OtoparkOtomasyonu.v2
                     }
                     catch (Exception ex)
                     {
-                        if (ex is SqlException) { MessageBox.Show("hata : plaka kayıtlı"); }
+                        if (ex is SqlException) { MessageBox.Show("hata : plaka kayıtlı veya eksik bilgi"); }
 
                     }
-
+                    columnNames.Clear();
+                    values.Clear();         
                 }
             }
-            
         }
+        /// <summary>
+        /// seçili sutunun güncelleme işlemini yapar
+        /// </summary>
         void AracKayitGuncelle()
         {
-            ArrayList columnNames = TableColumnsName(db.JustFillDataTable(sorguAracBilgileri));
-            ArrayList values = ListValues();
-            db.UpdateDataFromDataBase(columnNames,values);
+            if (aracKayitKosullari())
+            {
+                MessageBox.Show("hata aracKayitKosul : Bütün alanlar doldurulmalıdır.");
+            }
+            else
+            {
+                ArrayList columnNames = TableColumnsName(db.JustFillDataTable(ss.sorguAracBilgileri));
+                ArrayList values = ListValues();
+                db.UpdateDataFromDataBase(columnNames, values);
+            }
+                
         }
+        /// <summary>
+        /// Bring ile başlayan fonksiyonlar ise comboboxlara veritabanından gerekli olan değerleri gönderir
+        /// </summary>
         void BringMarkaToComboBox()
         {
             sorgu = "SELECT marka from AracMarka";
@@ -149,11 +173,18 @@ namespace OtoparkOtomasyonu.v2
             sutun = "renk";
             db.BringBrandsFromDataBaseToComboBox(this.comboBoxRenkler, sorgu, sutun);
         }
+        /// <summary>
+        /// DataGridView'a veritabanındaki AraçKayit hakkında herşeyi gönderir ve tablo üzerinde gösterir
+        /// </summary>
+        /// <param name="sorgu"></param>
         void AracKayitlariniListele(string sorgu)
         {
             table = new DataTable();
             db.ShowDatasOnDataGridView(table,dataGridView1,sorgu);
         }
+        /// <summary>
+        /// Seçili markaya göre modelleri comboboxa çeker
+        /// </summary>
         void MarkayaGoreModelListele()
         {
             comboBoxModel.Items.Clear();
@@ -162,6 +193,9 @@ namespace OtoparkOtomasyonu.v2
             sutun = "model";
             db.BringBrandsFromDataBaseToComboBox(comboBoxModel,sorgu,sutun);
         }
+        /// <summary>
+        /// bütün comboboxları temizler
+        /// </summary>
         void ClearAllBoxes()
         {
             comboBoxModel.Items.Clear();
@@ -171,6 +205,46 @@ namespace OtoparkOtomasyonu.v2
             comboBoxRenkler.Items.Clear();
             textBox1.Clear();
             textBox2.Clear();
+        }
+        /// <summary>
+        /// Eğer seçili bir satır var ise bütün boxları kullanıma kapatır yoksa açar
+        /// </summary>
+        void BoxesEnableOrDisable()
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                comboBoxMarka.Enabled = false; comboBoxRenkler.Enabled = false; comboBoxModel.Enabled = false; comboBoxYakit.Enabled = false;
+                comboBoxTip.Enabled = false; comboBoxTip.Enabled = false; textBox2.Enabled = false;
+            }
+            else
+            {
+                comboBoxMarka.Enabled = true; comboBoxRenkler.Enabled = true; comboBoxModel.Enabled = true; comboBoxYakit.Enabled = true;
+                comboBoxTip.Enabled = true; comboBoxTip.Enabled = true; textBox2.Enabled = true;
+            }
+        }
+        /// <summary>
+        /// güncelle butonuna basıldığında yapılması gereken kontrolleri sağlar
+        /// </summary>
+        void guncellemeKontrolleri()
+        {
+            if (guncellemeKontrolu == 1)
+            {
+                comboBoxMarka.Enabled = true; comboBoxRenkler.Enabled = true; comboBoxModel.Enabled = true; comboBoxYakit.Enabled = true;
+                comboBoxTip.Enabled = true; comboBoxTip.Enabled = true; textBox2.Enabled = true;
+                MessageBox.Show("Guncelleme kullanıma açıldı. Lütfen işlemlerinizi bitirip tekrar Güncelle'ye tıklayınız.");
+            }
+            if (guncellemeKontrolu == 2)
+            {
+                comboBoxMarka.Enabled = false; comboBoxRenkler.Enabled = false; comboBoxModel.Enabled = false; comboBoxYakit.Enabled = false;
+                comboBoxTip.Enabled = false; comboBoxTip.Enabled = false; textBox2.Enabled = false;
+                MessageBox.Show("Guncelleme başarıyla tamamlandı.");
+                guncellemeKontrolu = 0;
+                AracKayitGuncelle();
+                AracKayitlariniListele(ss.sorguDataGridView);
+                ClearAllBoxes();
+                dataGridView1.CurrentCell = null;
+                BringMarkaToComboBox(); BringModelToComboBox(); BringTipToComboBox(); BringYakitToComboBox(); BringRenklerToComboBox();
+            }
         }
         
         public FormAracKayit()
@@ -186,15 +260,16 @@ namespace OtoparkOtomasyonu.v2
 
         private void FormAracKayit_Load(object sender, EventArgs e)
         {
-            AracKayitlariniListele(sorguDataGridView);
+           
             textBox1.Enabled = false;
-            dataGridView1.CurrentCell = null;
             ClearAllBoxes();
             BringMarkaToComboBox();
             BringModelToComboBox();
             BringTipToComboBox();
             BringYakitToComboBox();
             BringRenklerToComboBox();
+            
+         
 
         }
         private void comboBoxRenkler_SelectedIndexChanged(object sender, EventArgs e)
@@ -204,14 +279,14 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonYenile_Click(object sender, EventArgs e)
         {
-            AracKayitlariniListele(sorguDataGridView);
-            dataGridView1.CurrentCell = null;
+            AracKayitlariniListele(ss.sorguDataGridView);
             ClearAllBoxes();
             BringMarkaToComboBox();
             BringModelToComboBox();
             BringTipToComboBox();
             BringYakitToComboBox();
             BringRenklerToComboBox();
+            dataGridView1.CurrentCell.Selected = false;
         }
 
         private void comboBoxMarka_SelectedIndexChanged(object sender, EventArgs e)
@@ -226,8 +301,8 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonEkle_Click(object sender, EventArgs e)
         {
-            aracKayitEkle(sorguAracKayit);
-            AracKayitlariniListele(sorguDataGridView);
+            aracKayitEkle(ss.sorguAracKayit);
+            AracKayitlariniListele(ss.sorguDataGridView);
             ClearAllBoxes();
             BringMarkaToComboBox();
             BringModelToComboBox();
@@ -240,8 +315,8 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonSil_Click(object sender, EventArgs e)
         {
-            aracKayitSil(this.textBox2,sutunAdiPlaka);
-            AracKayitlariniListele(sorguDataGridView);
+            aracKayitSil(this.textBox2,ss.sutunAdiPlaka);
+            AracKayitlariniListele(ss.sorguDataGridView);
             ClearAllBoxes();
             BringMarkaToComboBox();
             BringModelToComboBox();
@@ -258,7 +333,6 @@ namespace OtoparkOtomasyonu.v2
 
         private void comboBoxModel_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void comboBoxYakit_SelectedIndexChanged(object sender, EventArgs e)
@@ -268,6 +342,7 @@ namespace OtoparkOtomasyonu.v2
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             
         }
 
@@ -285,18 +360,22 @@ namespace OtoparkOtomasyonu.v2
             comboBoxModel.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             comboBoxYakit.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             comboBoxTip.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            BoxesEnableOrDisable();
         }
 
         private void buttonGuncelle_Click(object sender, EventArgs e)
         {
-            AracKayitGuncelle();
-            AracKayitlariniListele(sorguDataGridView);
-            ClearAllBoxes();
-            BringMarkaToComboBox();
-            BringModelToComboBox();
-            BringTipToComboBox();
-            BringYakitToComboBox();
-            BringRenklerToComboBox();
+           
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                guncellemeKontrolu++;
+                guncellemeKontrolleri();
+            }
+            else
+            {
+                MessageBox.Show("Seçili bir satır yok,bir satır seçiniz.");
+            }
+           
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -307,6 +386,11 @@ namespace OtoparkOtomasyonu.v2
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(comboBoxYakit.SelectedItem.ToString());
         }
     }
 }

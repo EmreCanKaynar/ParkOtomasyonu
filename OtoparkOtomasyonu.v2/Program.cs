@@ -16,7 +16,7 @@ namespace OtoparkOtomasyonu.v2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAracKayit());
+            Application.Run(new FormMusteriKayıt());
         }
     }
 }

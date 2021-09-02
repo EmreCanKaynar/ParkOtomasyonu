@@ -52,6 +52,7 @@
     <Compile Include="FormAracKayit.Designer.cs">
       <DependentUpon>FormAracKayit.cs</DependentUpon>
     </Compile>
+    <Compile Include="SorguSutun.cs" />
     <Compile Include="Veritabani.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
