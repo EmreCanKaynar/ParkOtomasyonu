@@ -26,12 +26,12 @@ namespace OtoparkOtomasyonu.v2
                           "SET plaka=@plaka,renkID=@renkID,markaID=@markaID,modelID=@modelID,yakitID=@yakitID,tipID=@tipID " +
                           "WHERE aracID=@aracID";
         }
-        public SqlConnection DataBaseConnect(string dbConnect) => new SqlConnection(dbConnect); 
+        public SqlConnection DataBaseConnect(string dbConnect) => new SqlConnection(dbConnect);
         public SqlCommand DataBaseCommand(string sorgu) => new SqlCommand(sorgu, DataBaseConnect(connectionPath));
         // Müşterinin tüm verilerini çekmesi için Dataset için kullanılacak olan modül
         public SqlDataAdapter DataBaseAdapter(string sorgu) => new SqlDataAdapter(DataBaseCommand(sorgu));
         // 'AracBilgisi' tablosundan  combobox'a PLAKA BİLGİSİ ÇEKİYOR
-        public void BringBrandsFromDataBaseToComboBox(ComboBox box, string sorgu, string sutunAdi) 
+        public void BringBrandsFromDataBaseToComboBox(ComboBox box, string sorgu, string sutunAdi)
         {
             using (SqlCommand command = DataBaseCommand(sorgu))
             {
@@ -53,23 +53,25 @@ namespace OtoparkOtomasyonu.v2
             DataBaseCommand(sorgu).Connection.Close();
             */
         }
-       // 'MusteriBilgisi' tablosundan datagridView'a TÜM BİLGİLERİ ÇEKİYOR 
-        public void ShowDatasOnDataGridView(DataTable datatable,DataGridView datagrid,string sorgu) 
+
+        // 'MusteriBilgisi' tablosundan datagridView'a TÜM BİLGİLERİ ÇEKİYOR 
+   
+        public void ShowDatasOnDataGridView(DataTable datatable, DataGridView datagrid, string sorgu)
         {
-            DataBaseAdapter(sorgu).Fill(datatable); 
+            DataBaseAdapter(sorgu).Fill(datatable);
             datagrid.DataSource = datatable;
         }
-        public int DataBaseSearchId(ComboBox box,string sorgu,string sutun)
+        public int DataBaseSearchId(ComboBox box, string sorgu, string sutun)
         {
 
-            int value=404;
-            if (box.SelectedIndex!=-1)
+            int value = 404;
+            if (box.SelectedIndex != -1)
                 using (SqlCommand command = DataBaseCommand(sorgu))
                 {
                     command.Parameters.Add("@" + sutun, SqlDbType.NVarChar).Value = box.SelectedItem.ToString();
                     command.Connection.Open();
                     reader = command.ExecuteReader();
-                    value = (reader.Read()) ? reader.GetInt32(0) :0;
+                    value = (reader.Read()) ? reader.GetInt32(0) : 0;
                 }
             else
             {
@@ -89,13 +91,14 @@ namespace OtoparkOtomasyonu.v2
                 return value;
             }
         }
+    
         public DataTable JustFillDataTable(string sorgu)
         {
             DataTable datatable = new DataTable();
             DataBaseAdapter(sorgu).Fill(datatable);
             return datatable;
         }
-        public void DeleteDataFromDataBase(TextBox box,string sutunAdi)
+        public void DeleteDataFromDataBase(TextBox box, string sutunAdi)
         {
             try
             {
@@ -107,16 +110,16 @@ namespace OtoparkOtomasyonu.v2
                     command.Connection.Close();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                if(e is SqlException)
+                if (e is SqlException)
                 {
                     MessageBox.Show("hata : Bu plaka bir müşteriye kayıtlıdır. Silinemez");
                 }
             }
-           
+
         }
-        public void DeleteDataFromDataBase(TextBox box,string sorgu,string sutunAdi)
+        public void DeleteDataFromDataBase(TextBox box, string sorgu, string sutunAdi)
         {
             using (SqlCommand command = DataBaseCommand(sorgu))
             {
@@ -126,9 +129,9 @@ namespace OtoparkOtomasyonu.v2
                 command.Connection.Close();
             }
         }
-        public void UpdateDataFromDataBase(ArrayList columnNames,ArrayList values)
+        public void UpdateDataFromDataBase(ArrayList columnNames, ArrayList values)
         {
-            using(SqlCommand command = DataBaseCommand(updateQuery))
+            using (SqlCommand command = DataBaseCommand(updateQuery))
             {
                 try
                 {
@@ -140,15 +143,15 @@ namespace OtoparkOtomasyonu.v2
                     command.ExecuteNonQuery();
                     command.Connection.Close();
                 }
-                
-                 catch (Exception ex)
+
+                catch (Exception ex)
                 {
                     if (ex is SqlException) { MessageBox.Show("hata : plaka kayıtlı veya Zorunlu Alan boş!"); }
 
                 }
             }
         }
-        public void UpdateDataFromDataBase(ArrayList columnNames, ArrayList values,string sorgu)
+        public void UpdateDataFromDataBase(ArrayList columnNames, ArrayList values, string sorgu)
         {
             using (SqlCommand command = DataBaseCommand(sorgu))
             {
@@ -170,13 +173,35 @@ namespace OtoparkOtomasyonu.v2
                 }
             }
         }
-        public void AddDataToDataBase(string sorgu)
+        public List<int> FindParkedVehicle(string sorgu) 
         {
-            using (SqlCommand command = DataBaseCommand(sorgu)) {
-               
-
+            List<int> list = new List<int>();
+            using (SqlCommand command = DataBaseCommand(sorgu))
+            {
+                command.Connection.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(reader.GetInt32(0));
+                }
+                command.Connection.Close();
+            }
+            return list;
+        }
+        public void BringToComboBox(ComboBox box, string sorgu, string sutunAdi, int value)
+        {
+            using (SqlCommand command = DataBaseCommand(sorgu))
+            {
+                Console.WriteLine(value + "Veritabanı classı");
+                command.Parameters.AddWithValue("@"+sutunAdi, value);
+                command.Connection.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    box.Items.Add(reader[0]);
+                }
+                command.Connection.Close();
             }
         }
-    }
-}
+        } }
 

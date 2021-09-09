@@ -14,6 +14,8 @@ namespace OtoparkOtomasyonu.v2
     {
         void FormGetir(Form form)
         {
+           if(Application.OpenForms.Count>2)
+                Application.OpenForms[2].Close();
             panel2.Controls.Clear();
             form.MdiParent = this;
             form.FormBorderStyle = FormBorderStyle.None;
@@ -35,8 +37,7 @@ namespace OtoparkOtomasyonu.v2
         private void buttonMusteriKayit_Click(object sender, EventArgs e)
         {
             FormMusteriKayıt form = new FormMusteriKayıt();
-            FormGetir(form);
-            
+            FormGetir(form);  
         }
 
         private void buttonAracKayit_Click(object sender, EventArgs e)

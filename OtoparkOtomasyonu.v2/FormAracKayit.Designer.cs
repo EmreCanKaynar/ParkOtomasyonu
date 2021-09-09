@@ -46,10 +46,13 @@ namespace OtoparkOtomasyonu.v2
             this.comboBoxYakit = new System.Windows.Forms.ComboBox();
             this.comboBoxModel = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonYenile = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -60,7 +63,7 @@ namespace OtoparkOtomasyonu.v2
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 186);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -70,13 +73,15 @@ namespace OtoparkOtomasyonu.v2
             this.dataGridView1.TabIndex = 30;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(538, 31);
+            this.label5.Location = new System.Drawing.Point(478, 29);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 15);
@@ -85,8 +90,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             // buttonGuncelle
             // 
-            this.buttonGuncelle.Location = new System.Drawing.Point(216, 137);
-            this.buttonGuncelle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGuncelle.Location = new System.Drawing.Point(190, 137);
+            this.buttonGuncelle.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGuncelle.Name = "buttonGuncelle";
             this.buttonGuncelle.Size = new System.Drawing.Size(117, 36);
             this.buttonGuncelle.TabIndex = 27;
@@ -96,8 +101,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             // buttonSil
             // 
-            this.buttonSil.Location = new System.Drawing.Point(382, 137);
-            this.buttonSil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSil.Location = new System.Drawing.Point(356, 137);
+            this.buttonSil.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSil.Name = "buttonSil";
             this.buttonSil.Size = new System.Drawing.Size(117, 36);
             this.buttonSil.TabIndex = 26;
@@ -107,8 +112,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             // buttonEkle
             // 
-            this.buttonEkle.Location = new System.Drawing.Point(51, 137);
-            this.buttonEkle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEkle.Location = new System.Drawing.Point(25, 137);
+            this.buttonEkle.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEkle.Name = "buttonEkle";
             this.buttonEkle.Size = new System.Drawing.Size(117, 36);
             this.buttonEkle.TabIndex = 25;
@@ -120,7 +125,7 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(290, 82);
+            this.label4.Location = new System.Drawing.Point(230, 80);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 15);
@@ -131,7 +136,7 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(82, 29);
+            this.label3.Location = new System.Drawing.Point(22, 27);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 15);
@@ -142,7 +147,7 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(292, 28);
+            this.label2.Location = new System.Drawing.Point(232, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 15);
@@ -153,7 +158,7 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(82, 76);
+            this.label1.Location = new System.Drawing.Point(22, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 15);
@@ -162,8 +167,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(153, 29);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Location = new System.Drawing.Point(93, 27);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.MaxLength = 11;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(113, 23);
@@ -174,7 +179,7 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(538, 80);
+            this.label6.Location = new System.Drawing.Point(478, 78);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 15);
@@ -185,8 +190,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.comboBoxRenkler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRenkler.FormattingEnabled = true;
-            this.comboBoxRenkler.Location = new System.Drawing.Point(153, 78);
-            this.comboBoxRenkler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxRenkler.Location = new System.Drawing.Point(93, 76);
+            this.comboBoxRenkler.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxRenkler.Name = "comboBoxRenkler";
             this.comboBoxRenkler.Size = new System.Drawing.Size(113, 25);
             this.comboBoxRenkler.TabIndex = 37;
@@ -196,8 +201,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.comboBoxMarka.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMarka.FormattingEnabled = true;
-            this.comboBoxMarka.Location = new System.Drawing.Point(373, 25);
-            this.comboBoxMarka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxMarka.Location = new System.Drawing.Point(313, 23);
+            this.comboBoxMarka.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMarka.Name = "comboBoxMarka";
             this.comboBoxMarka.Size = new System.Drawing.Size(113, 25);
             this.comboBoxMarka.TabIndex = 38;
@@ -207,8 +212,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.comboBoxTip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTip.FormattingEnabled = true;
-            this.comboBoxTip.Location = new System.Drawing.Point(619, 76);
-            this.comboBoxTip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTip.Location = new System.Drawing.Point(559, 74);
+            this.comboBoxTip.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTip.Name = "comboBoxTip";
             this.comboBoxTip.Size = new System.Drawing.Size(113, 25);
             this.comboBoxTip.TabIndex = 39;
@@ -218,8 +223,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.comboBoxYakit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxYakit.FormattingEnabled = true;
-            this.comboBoxYakit.Location = new System.Drawing.Point(619, 27);
-            this.comboBoxYakit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxYakit.Location = new System.Drawing.Point(559, 25);
+            this.comboBoxYakit.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxYakit.Name = "comboBoxYakit";
             this.comboBoxYakit.Size = new System.Drawing.Size(113, 25);
             this.comboBoxYakit.TabIndex = 40;
@@ -229,8 +234,8 @@ namespace OtoparkOtomasyonu.v2
             // 
             this.comboBoxModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModel.FormattingEnabled = true;
-            this.comboBoxModel.Location = new System.Drawing.Point(374, 76);
-            this.comboBoxModel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxModel.Location = new System.Drawing.Point(314, 74);
+            this.comboBoxModel.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxModel.Name = "comboBoxModel";
             this.comboBoxModel.Size = new System.Drawing.Size(113, 25);
             this.comboBoxModel.TabIndex = 41;
@@ -238,8 +243,9 @@ namespace OtoparkOtomasyonu.v2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.buttonYenile);
             this.groupBox1.Controls.Add(this.buttonGuncelle);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.comboBoxTip);
@@ -256,40 +262,59 @@ namespace OtoparkOtomasyonu.v2
             this.groupBox1.Controls.Add(this.comboBoxRenkler);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(0, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(857, 184);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(857, 183);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Kayıt Ekle";
+            this.groupBox1.Text = "ARAÇ İŞLEMLERİ";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(20, 32);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(163, 23);
+            this.textBox3.TabIndex = 44;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(724, 80);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 43);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "Kutucukları Temizle";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.WindowText;
             this.textBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(722, 137);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(724, 137);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(102, 36);
+            this.textBox1.Size = new System.Drawing.Size(113, 36);
             this.textBox1.TabIndex = 42;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
-            // buttonYenile
+            // groupBox2
             // 
-            this.buttonYenile.Location = new System.Drawing.Point(550, 137);
-            this.buttonYenile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonYenile.Name = "buttonYenile";
-            this.buttonYenile.Size = new System.Drawing.Size(117, 36);
-            this.buttonYenile.TabIndex = 31;
-            this.buttonYenile.Text = "Tabloyu Yenile";
-            this.buttonYenile.UseVisualStyleBackColor = true;
-            this.buttonYenile.Click += new System.EventHandler(this.buttonYenile_Click);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Location = new System.Drawing.Point(499, 112);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 67);
+            this.groupBox2.TabIndex = 43;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "KAYIT ARA";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // FormAracKayit
             // 
@@ -299,13 +324,15 @@ namespace OtoparkOtomasyonu.v2
             this.ClientSize = new System.Drawing.Size(857, 444);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormAracKayit";
             this.Text = "FormAracKayit";
             this.Load += new System.EventHandler(this.FormAracKayit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -328,7 +355,9 @@ namespace OtoparkOtomasyonu.v2
         private System.Windows.Forms.ComboBox comboBoxYakit;
         private System.Windows.Forms.ComboBox comboBoxModel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button buttonYenile;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

@@ -23,6 +23,7 @@ namespace OtoparkOtomasyonu.v2
         public string sutunAdiTip;
         public string sutunAdiYakit;
         public string sutunAdiTC;
+        public string sutunAdiIsEmpty;
         // DataGriddeKullanılacakSorgu ( idler yok)
         public string sorguDataGridView;
         public string sorguDataGridViewMusteriBilgisi;
@@ -34,6 +35,17 @@ namespace OtoparkOtomasyonu.v2
         public string sorguMusteriKayit;
         public string sorguMusteriKayitSil;
         public string sorguMusteriKayitUpdate;
+        // FormParkYeri
+        public string sorguKonum;
+        public string sutunAdiKonum;
+        public string sorguAracParkEt;
+        public string sorguPark;
+        public string sorguParkHalindekiAraclar;
+        public string sorguAracIDilePlakaGetir;
+        public string sutunAdiaracID;
+        public string sorguKonumBosMu;
+        public string sorguKonumDoldur;
+        public string sorguAracParkHalindemi;
 
 
        public SorguSutun()
@@ -59,6 +71,9 @@ namespace OtoparkOtomasyonu.v2
             sutunAdiTip =   "tip";
             sutunAdiYakit = "yakit";
             sutunAdiTC = "tckimlikno";
+            sutunAdiKonum = "konumID";
+            sutunAdiaracID = "aracID";
+            sutunAdiIsEmpty = "isEmpty";
             // FromMusteriKayit
             sorguDataGridViewMusteriBilgisi = "SELECT MusteriBilgisi.musteriID,MusteriBilgisi.tckimlikno,MusteriBilgisi.ad,MusteriBilgisi.soyad,AracBilgisi.plaka,MusteriBilgisi.eMail FROM MusteriBilgisi " +
                                                " INNER JOIN AracBilgisi ON AracBilgisi.aracID=MusteriBilgisi.aracID "+
@@ -71,6 +86,22 @@ namespace OtoparkOtomasyonu.v2
             sorguMusteriKayitUpdate = "UPDATE MusteriBilgisi " +
                           "SET tckimlikno =@tckimlikno,ad=@ad,soyad=@soyad,aracID=@aracID,eMail=@eMail " +
                           " WHERE musteriID=@musteriID";
+            //FormParkYeri
+            sorguKonum = "SELECT konumID FROM Konum";
+            sorguAracParkEt = "INSERT INTO Park(aracID,girisTarih,cikisTarih,konumID,calisanID,fiyat) VALUES(@aracID,@girisTarih,@cikisTarih,@konumID,@calisanID,@fiyat)";
+            sorguPark = "SELECT parkID,aracID,girisTarih,cikisTarih,konumID,calisanID,fiyat FROM Park ";
+            sorguParkHalindekiAraclar = "SELECT Park.aracID FROM Park" +
+                                        " INNER JOIN Konum ON Park.konumID = Konum.konumID " +
+                                         " WHERE Konum.isEmpty = 'False' AND Park.cikisTarih IS NULL";
+            sorguAracIDilePlakaGetir = "SELECT plaka FROM AracBilgisi WHERE aracID = @aracID";
+            sorguKonumBosMu =          "SELECT isEmpty FROM Konum" +
+                                         " WHERE konumID= @konumID";
+            sorguKonumDoldur = "UPDATE Konum " +
+                             "SET isEmpty = @isEmpty " +
+                             "WHERE konumID = @konumID";
+            sorguAracParkHalindemi = "SELECT Konum.isEmpty FROM Park " +
+                                     "INNER JOIN Konum ON Konum.konumID = Park.konumID " +
+                                     "WHERE aracID=@aracID AND cikisTarih IS NULL";
         }
     }
 }
