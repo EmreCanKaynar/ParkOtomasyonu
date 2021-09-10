@@ -46,6 +46,10 @@ namespace OtoparkOtomasyonu.v2
         public string sorguKonumBosMu;
         public string sorguKonumDoldur;
         public string sorguAracParkHalindemi;
+        public string sorguAracParkCikis;
+        public string sorguAracGirisTarih;
+        public string sorguAracIDileKonumBul;
+        public string sorguKonumBosalt;
 
 
        public SorguSutun()
@@ -102,6 +106,20 @@ namespace OtoparkOtomasyonu.v2
             sorguAracParkHalindemi = "SELECT Konum.isEmpty FROM Park " +
                                      "INNER JOIN Konum ON Konum.konumID = Park.konumID " +
                                      "WHERE aracID=@aracID AND cikisTarih IS NULL";
+
+            sorguAracParkCikis = "UPDATE Park" +
+                               " SET cikisTarih = @cikisTarih , fiyat =@fiyat " +
+                               "WHERE aracID = @aracID AND cikisTarih IS NULL";
+
+            sorguAracGirisTarih = "SELECT girisTarih from Park" +
+                                  " WHERE aracID = @aracID AND cikisTarih IS NULL";
+            sorguAracIDileKonumBul = "SELECT konumID FROM Park " +
+                                     "WHERE aracID = @aracID AND cikisTarih IS NULL ";
+            sorguKonumBosalt = "UPDATE Konum " +
+                               "SET isEmpty = 'True' " +
+                               " WHERE konumID = @konumID";
+         
+
         }
     }
 }

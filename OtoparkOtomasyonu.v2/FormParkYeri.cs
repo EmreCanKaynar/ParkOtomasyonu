@@ -111,17 +111,18 @@ namespace OtoparkOtomasyonu.v2
                 DialogResult result = MessageBox.Show(plaka + " plakayi seçili olan konuma kaydetmek istiyor musunuz?", "", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    if (SeciliAracParkHalindeMi(ss.sorguAracParkHalindemi, ss.sutunAdiaracID))
+                    if (KonumBosMu(ss.sorguKonumBosMu,ss.sutunAdiKonum))
                     {
-                        List<Button> list = ListOfButtons();
-                        MessageBox.Show("Plakası : " + plaka + " olan aracın girişi yapıldı");
-                        AracParkEt(ss.sorguAracParkEt);
-                        ParkYeriDoldur(ss.sorguKonumDoldur);
+                        if (SeciliAracParkHalindeMi(ss.sorguAracParkHalindemi, ss.sutunAdiaracID))
+                        {
+                            List<Button> list = ListOfButtons();
+                            MessageBox.Show("Plakası : " + plaka + " olan aracın girişi yapıldı");
+                            AracParkEt(ss.sorguAracParkEt);
+                            ParkYeriDoldur(ss.sorguKonumDoldur);
+                        }
+                        else{ MessageBox.Show("Girmiş olduğunuz plaka zaten park halinde : " + this.comboBoxPlaka.SelectedItem.ToString(),"PARK GİRİŞ UYARI"); }
                     }
-                    else
-                    {
-                        MessageBox.Show(this.comboBoxPlaka.SelectedItem.ToString()+" :Seçmiş olduğunuz araç zaten park halinde");
-                    }
+                    else { MessageBox.Show("Seçmiş olduğunuz konum doludur.\n Lütfen başka bir konum seçiniz"); }
                 }
             }
         }
@@ -176,6 +177,7 @@ namespace OtoparkOtomasyonu.v2
         void ButtonlariSariYap(Button button)
         {
             button.BackColor = Color.Yellow;
+            button.ForeColor = Color.Black;
         }
         void ButtonlariYesilYap(Button button)
         {
@@ -184,11 +186,14 @@ namespace OtoparkOtomasyonu.v2
                 button.Enabled = true;
             }
             button.BackColor = Color.Lime;
+            button.ForeColor = Color.Black;
+
         }
         void ButtonlariKirmiziYap(Button button)
         {
             button.Enabled = false;
             button.BackColor = Color.Red;
+            button.ForeColor = Color.Black;
         }
         List<Button> ListOfButtons()
         {
@@ -308,6 +313,133 @@ namespace OtoparkOtomasyonu.v2
             }
 
         }
+        void aracParkCikis(string sorgu)
+        {
+            using (SqlCommand command = vt.DataBaseCommand(sorgu))
+            {
+                command.Parameters.AddWithValue("@cikisTarih", DateTime.Now);
+                command.Parameters.AddWithValue("@fiyat", ParkFiyatHesapla(aracParkGirisTarihi(ss.sorguAracGirisTarih)));
+                command.Parameters.AddWithValue("@aracID", vt.DataBaseSearchId(this.comboBoxPlaka2, ss.sorguAracID, ss.sutunAdiPlaka));
+                command.Parameters.AddWithValue("@isEmpty", "'True");
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+            }
+            ParkHalindekiAraclariComboBoxaGetir();
+        }
+        double ParkFiyatHesapla(DateTime aracParkGirisTarihi)
+        {
+            TimeSpan times = DateTime.Now - aracParkGirisTarihi;
+            double a = Convert.ToDouble(times.TotalHours);
+            double sonuc = Math.Round(a * 4, 3);
+            return sonuc;
+        }
+        DateTime aracParkGirisTarihi(string sorgu)
+        {
+            using(SqlCommand command = vt.DataBaseCommand(sorgu))
+            {
+                SqlDataReader reader;
+                DateTime time= new DateTime();
+                command.Parameters.AddWithValue("@aracID", vt.DataBaseSearchId(this.comboBoxPlaka2, ss.sorguAracID, ss.sutunAdiPlaka));
+                command.Connection.Open();
+                reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    time = reader.GetDateTime(0);
+                }
+                else
+                {
+                    MessageBox.Show("tarih okunamadı");
+                }
+                command.Connection.Close(); 
+                return time;
+            }
+        }
+        int DenemeDate(DateTime aracParkTarih)
+        {
+            // saat başı fiyat
+            int saatlikParkFiyat = 4;
+            // en son işlemlerde kullanılacak değerler
+            int sonucAy=0; int sonucSaat=31;int sonucGun=0;
+            // şimdiki zaman
+            int simdikiZamanYil = Convert.ToInt32(DateTime.Now.Year);
+            int simdikiZamanAy = Convert.ToInt32(DateTime.Now.Month);
+            int simdikiZamanGun = Convert.ToInt32(DateTime.Now.Day);
+            int simdikiZamanSaat = Convert.ToInt32(DateTime.Now.Hour);
+            // araçın park edildiği zaman
+            int aracParkYil = Convert.ToInt32(aracParkTarih.Year);
+            int aracParkAy = Convert.ToInt32(aracParkTarih.Month);
+            int aracParkGun = Convert.ToInt32(aracParkTarih.Day);
+            int aracParkSaat= Convert.ToInt32(aracParkTarih.Hour);
+
+            if (aracParkYil < simdikiZamanYil && (simdikiZamanYil-aracParkYil  == 1))
+            {
+                sonucAy = 12 - (aracParkAy - simdikiZamanAy);
+            }
+            else
+            {
+                sonucAy = simdikiZamanAy - aracParkAy;
+
+                if(sonucAy > 1)
+                {
+                    if (simdikiZamanGun > aracParkGun)
+                    {
+                        sonucGun = ((sonucAy - 1) * 30) - (30 - (simdikiZamanGun - aracParkGun));
+                    }
+                    else
+                    {
+                        sonucGun = ((sonucAy - 1) * 30) - (30 - (aracParkGun-simdikiZamanGun));
+                    }
+                }
+                else
+                {
+                    sonucGun =  (simdikiZamanGun- aracParkGun);
+                } 
+            }
+            if (aracParkSaat > simdikiZamanSaat)
+            {
+                sonucSaat = (sonucGun * 24) - (aracParkSaat - simdikiZamanSaat);
+            }
+            else
+            {
+                sonucSaat = (sonucGun * 24) - (simdikiZamanSaat - aracParkSaat);
+            }
+            return (saatlikParkFiyat * sonucSaat);
+            
+        }
+        int AracIDileKonumIDBul(string sorgu)
+        {
+            int konumID=0;
+            using (SqlCommand command = vt.DataBaseCommand(sorgu))
+            {
+                SqlDataReader reader;
+                command.Parameters.AddWithValue("@aracID", vt.DataBaseSearchId(this.comboBoxPlaka2, ss.sorguAracID,ss.sutunAdiPlaka));
+                command.Connection.Open();
+                reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    konumID = reader.GetInt32(0);
+                }
+                else
+                {
+                    MessageBox.Show("okunamadi AracIDİLEKONUMBUL");
+                }
+            }
+            
+            return konumID;
+        }
+        void KonumBosalt(string sorgu)
+        {
+            using (SqlCommand command = vt.DataBaseCommand(sorgu))
+            {
+               
+                command.Parameters.AddWithValue("@konumID", AracIDileKonumIDBul(ss.sorguAracIDileKonumBul));
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+                command.Connection.Close();
+                
+            }
+        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -349,13 +481,26 @@ namespace OtoparkOtomasyonu.v2
         {
             AracParkKontrol();
             ParkHalindekiAraclariComboBoxaGetir();
+            comboBoxPlaka.SelectedIndex = -1;
+            comboBoxPlaka.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ParkHalindekiAraclariComboBoxaGetir();
-           Console.WriteLine(SeciliAracParkHalindeMi(ss.sorguAracParkHalindemi, ss.sutunAdiaracID).ToString());
-
+            if(comboBoxPlaka2.SelectedIndex == -1)
+            {
+                MessageBox.Show("Plaka seçiniz.");
+            }
+            else
+            {
+                MessageBox.Show(this.comboBoxPlaka2.SelectedItem.ToString() + "<--> plakalı aracın çıkışı yapıldı.\n" + "Toplam Tutar : " 
+                    + ParkFiyatHesapla(aracParkGirisTarihi(ss.sorguAracGirisTarih)).ToString() + " TL");
+                KonumBosalt(ss.sorguKonumBosalt);
+                aracParkCikis(ss.sorguAracParkCikis);
+                DoluParkYerleriniKirmiziYap();
+                comboBoxPlaka2.Text = "";
+            }
+          
 
         }
 
@@ -929,6 +1074,10 @@ namespace OtoparkOtomasyonu.v2
             
         }
 
+        private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

@@ -77,6 +77,7 @@ namespace OtoparkOtomasyonu.v2
             {
                 MessageBox.Show("Hata : Zorunlu Alanları Doldurunuz : " + box.Name.ToString());
             }
+
             return value;
         }
         public int DataBaseSearchId(TextBox box, string sorgu, string sutun)

@@ -1050,6 +1050,7 @@ namespace OtoparkOtomasyonu.v2
             this.groupBox7.TabIndex = 10;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Park Çıkış";
+            this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
             // 
             // FormParkYeri
             // 
