@@ -92,9 +92,7 @@ namespace OtoparkOtomasyonu.v2
         /// <param name="sorgu"></param>
         void aracKayitEkle(string sorgu)
         {
-
-
-            if (aracKayitKosullari())
+            if (aracKayitKosullari()) 
             {
                 MessageBox.Show("hata aracKayitKosul : Bütün alanlar doldurulmalıdır.");
             }
@@ -293,7 +291,7 @@ namespace OtoparkOtomasyonu.v2
         {
             string formadi = "FormParkYeri";
             if (Application.OpenForms[formadi] != null)
-            {
+            {   
                 FormParkYeri form = (FormParkYeri)Application.OpenForms[formadi];
                 form.PlakalariGetir();
                 form.comboBoxPlaka.Text = textBox2.Text.ToString();
@@ -316,6 +314,7 @@ namespace OtoparkOtomasyonu.v2
             AracKayitlariniListele(ss.sorguDataGridView);
             textBox1.Enabled = false;
             ClearAllBoxes();
+            dataGridView1.ClearSelection();
             BringAllDatasToBoxes();
         }
         private void comboBoxRenkler_SelectedIndexChanged(object sender, EventArgs e)

@@ -21,7 +21,7 @@ namespace OtoparkOtomasyonu.v2
         {
             Form1 form = new Form1();
             form.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void labelbaslik_Click(object sender, EventArgs e)

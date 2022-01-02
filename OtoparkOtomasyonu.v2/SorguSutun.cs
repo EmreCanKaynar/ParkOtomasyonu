@@ -69,7 +69,7 @@ namespace OtoparkOtomasyonu.v2
                                  "INNER JOIN AracTip   ON AracBilgisi.tipID   = AracTip.tipID " +
                                  " ORDER BY aracID DESC";
             sutunAdiPlaka = "plaka";
-            sutunAdiMarka = "marka";
+           sutunAdiMarka = "marka";
             sutunAdiModel = "model";
             sutunAdiRenk =  "renk";
             sutunAdiTip =   "tip";

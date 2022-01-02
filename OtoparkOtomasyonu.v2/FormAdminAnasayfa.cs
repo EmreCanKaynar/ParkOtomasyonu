@@ -45,5 +45,11 @@ namespace OtoparkOtomasyonu.v2
             FormAracKayit form = new FormAracKayit();
             FormGetir(form);
         }
+
+        private void buttonParkYeriSorgu_Click(object sender, EventArgs e)
+        {
+            FormParkYeri form = new FormParkYeri();
+            FormGetir(form);
+        }
     }
 }

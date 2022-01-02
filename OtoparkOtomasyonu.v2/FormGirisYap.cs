@@ -161,5 +161,10 @@ namespace OtoparkOtomasyonu.v2
         {
            
         }
+
+        private void textBoxsifre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

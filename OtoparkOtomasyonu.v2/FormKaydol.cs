@@ -62,7 +62,7 @@ namespace OtoparkOtomasyonu.v2
         {
             connection = new SqlConnection(connectionadress);
             return connection;
-        }
+        }   
         void SqlSignUp()
         {
             query = "INSERT INTO CalisanBilgisi(tckimlikno,ad,soyad,telNo,eMail,yetkiID,sifre,kayitTarih) VALUES(@tckimlikno,@ad,@soyad,@telNo,@eMail,@yetkiID,@sifre,@kayitTarih)";
@@ -91,8 +91,6 @@ namespace OtoparkOtomasyonu.v2
             }
             return yetki;
         }
-        
-       
         
         public FormKaydol()
         {
@@ -294,11 +292,11 @@ namespace OtoparkOtomasyonu.v2
 
         private void buttonKayıtOl_Click(object sender, EventArgs e)
         {
-            MessageBox.Show( PasswordControl(textBoxsifre.Text.ToString()).ToString() +tckimlikkontrol.ToString() + telnokontrol.ToString() + adkontrol.ToString() + soyadkontrol.ToString() + emailkontrol.ToString() + sifrekontrol.ToString() + sifretekrarkontrol.ToString() + yetkikontrol.ToString());
             try
             {
                 SqlConnection();
-                if(PasswordControl(textBoxsifre.Text.ToString()) && tckimlikkontrol && telnokontrol & adkontrol && soyadkontrol && emailkontrol && sifrekontrol && sifretekrarkontrol && yetkikontrol)
+                if(PasswordControl(textBoxsifre.Text.ToString()) && tckimlikkontrol && telnokontrol
+                    & adkontrol && soyadkontrol && emailkontrol && sifrekontrol && sifretekrarkontrol && yetkikontrol)
                 {
                     SqlSignUp();
                     MessageBox.Show("Kayıt Olundu");
@@ -306,34 +304,24 @@ namespace OtoparkOtomasyonu.v2
                     {
                         FormGirisYap girisyap = new FormGirisYap();
                         girisyap.Show();
-                        this.Hide();
+                        this.Close();
                     }
                     else if (YetkiKontrol() == 1)
                     {
                         FormYapOperator op = new FormYapOperator();
                         op.Show();
-                        this.Hide();
-                    }
-
-                   
+                        this.Close();
+                    }  
                 }
                 else
-                {
-                    
-                        if (!PasswordControl(textBoxsifre.Text.ToString())){
+                { if (!PasswordControl(textBoxsifre.Text.ToString())){
                             MessageBox.Show("Küçük ,büyük karakter noktalama işareti ve sayı içeren bir şifreniz olmalı");
                         }
                     else
-                    {
-                        MessageBox.Show("Zorunlu alanları doldurunuz!");
-                    }
+                    {   MessageBox.Show("Zorunlu alanları doldurunuz!");  }
                 }
-                
             }
-            catch
-            {
-                MessageBox.Show("Hata : Tc kimilk nuamarası zaten mevcut");
-            }
+            catch {MessageBox.Show("Hata : Tc kimilk nuamarası zaten mevcut"); }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -382,17 +370,30 @@ namespace OtoparkOtomasyonu.v2
                 labelemailkontrol.Text = "Geçerli bir e-mail adresi girilmelidir.";
                 labelemailkontrol.ForeColor = Color.Red;
                 emailkontrol = false;
-
             }
             else
             {
                 emailkontrol = true;
                 labelemailkontrol.Visible = false;
-
             }
         }
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelyetkikontrol_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_2(object sender, EventArgs e)
         {
 
         }

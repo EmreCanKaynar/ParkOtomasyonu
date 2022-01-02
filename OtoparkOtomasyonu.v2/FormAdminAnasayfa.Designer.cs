@@ -58,9 +58,10 @@ namespace OtoparkOtomasyonu.v2
             this.buttonAdminAyarlar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAdminAyarlar.ImageKey = "admin.png";
             this.buttonAdminAyarlar.ImageList = this.ımageList1;
-            this.buttonAdminAyarlar.Location = new System.Drawing.Point(1450, 12);
+            this.buttonAdminAyarlar.Location = new System.Drawing.Point(1088, 10);
+            this.buttonAdminAyarlar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdminAyarlar.Name = "buttonAdminAyarlar";
-            this.buttonAdminAyarlar.Size = new System.Drawing.Size(386, 80);
+            this.buttonAdminAyarlar.Size = new System.Drawing.Size(290, 65);
             this.buttonAdminAyarlar.TabIndex = 7;
             this.buttonAdminAyarlar.Text = "     AYARLAR";
             this.buttonAdminAyarlar.UseVisualStyleBackColor = false;
@@ -72,9 +73,10 @@ namespace OtoparkOtomasyonu.v2
             this.buttonMusteriKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMusteriKayit.ImageKey = "customer.png";
             this.buttonMusteriKayit.ImageList = this.ımageList1;
-            this.buttonMusteriKayit.Location = new System.Drawing.Point(533, 12);
+            this.buttonMusteriKayit.Location = new System.Drawing.Point(400, 10);
+            this.buttonMusteriKayit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMusteriKayit.Name = "buttonMusteriKayit";
-            this.buttonMusteriKayit.Size = new System.Drawing.Size(416, 80);
+            this.buttonMusteriKayit.Size = new System.Drawing.Size(312, 65);
             this.buttonMusteriKayit.TabIndex = 7;
             this.buttonMusteriKayit.Text = "MÜŞTERİ KAYIT";
             this.buttonMusteriKayit.UseVisualStyleBackColor = false;
@@ -87,12 +89,14 @@ namespace OtoparkOtomasyonu.v2
             this.buttonParkYeriSorgu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonParkYeriSorgu.ImageKey = "parking.png";
             this.buttonParkYeriSorgu.ImageList = this.ımageList1;
-            this.buttonParkYeriSorgu.Location = new System.Drawing.Point(47, 12);
+            this.buttonParkYeriSorgu.Location = new System.Drawing.Point(35, 10);
+            this.buttonParkYeriSorgu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonParkYeriSorgu.Name = "buttonParkYeriSorgu";
-            this.buttonParkYeriSorgu.Size = new System.Drawing.Size(402, 80);
+            this.buttonParkYeriSorgu.Size = new System.Drawing.Size(302, 65);
             this.buttonParkYeriSorgu.TabIndex = 8;
             this.buttonParkYeriSorgu.Text = "PARK YERİ SORGULA";
             this.buttonParkYeriSorgu.UseVisualStyleBackColor = false;
+            this.buttonParkYeriSorgu.Click += new System.EventHandler(this.buttonParkYeriSorgu_Click);
             // 
             // panel1
             // 
@@ -103,8 +107,9 @@ namespace OtoparkOtomasyonu.v2
             this.panel1.Controls.Add(this.buttonMusteriKayit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1924, 102);
+            this.panel1.Size = new System.Drawing.Size(1443, 83);
             this.panel1.TabIndex = 12;
             // 
             // buttonAracKayit
@@ -114,9 +119,10 @@ namespace OtoparkOtomasyonu.v2
             this.buttonAracKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAracKayit.ImageKey = "racing-car.png";
             this.buttonAracKayit.ImageList = this.ımageList1;
-            this.buttonAracKayit.Location = new System.Drawing.Point(1003, 12);
+            this.buttonAracKayit.Location = new System.Drawing.Point(752, 10);
+            this.buttonAracKayit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAracKayit.Name = "buttonAracKayit";
-            this.buttonAracKayit.Size = new System.Drawing.Size(377, 80);
+            this.buttonAracKayit.Size = new System.Drawing.Size(283, 65);
             this.buttonAracKayit.TabIndex = 13;
             this.buttonAracKayit.Text = "ARAÇ KAYIT";
             this.buttonAracKayit.UseVisualStyleBackColor = false;
@@ -125,20 +131,22 @@ namespace OtoparkOtomasyonu.v2
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightBlue;
-            this.panel2.Location = new System.Drawing.Point(274, 220);
+            this.panel2.Location = new System.Drawing.Point(206, 179);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1534, 634);
+            this.panel2.Size = new System.Drawing.Size(1150, 691);
             this.panel2.TabIndex = 14;
             // 
             // FormAdminAnasayfa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1443, 857);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormAdminAnasayfa";
             this.Text = "FormAdminAnasayfa";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

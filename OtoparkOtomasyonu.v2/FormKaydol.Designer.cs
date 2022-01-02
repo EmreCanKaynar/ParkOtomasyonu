@@ -81,7 +81,7 @@ namespace OtoparkOtomasyonu.v2
             this.labelbaslik.Font = new System.Drawing.Font("Microsoft YaHei", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelbaslik.Location = new System.Drawing.Point(438, 18);
             this.labelbaslik.Name = "labelbaslik";
-            this.labelbaslik.Size = new System.Drawing.Size(176, 44);
+            this.labelbaslik.Size = new System.Drawing.Size(143, 36);
             this.labelbaslik.TabIndex = 8;
             this.labelbaslik.Text = "KAYIT OL";
             // 
@@ -91,7 +91,7 @@ namespace OtoparkOtomasyonu.v2
             this.label1.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(220, 97);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 25);
+            this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "TC NO";
             // 
@@ -101,7 +101,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxad.Location = new System.Drawing.Point(430, 137);
             this.textBoxad.MaxLength = 30;
             this.textBoxad.Name = "textBoxad";
-            this.textBoxad.Size = new System.Drawing.Size(217, 24);
+            this.textBoxad.Size = new System.Drawing.Size(217, 21);
             this.textBoxad.TabIndex = 16;
             this.textBoxad.TextChanged += new System.EventHandler(this.textBoxad_TextChanged);
             this.textBoxad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxad_KeyPress);
@@ -112,7 +112,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxsoyad.Location = new System.Drawing.Point(429, 181);
             this.textBoxsoyad.MaxLength = 30;
             this.textBoxsoyad.Name = "textBoxsoyad";
-            this.textBoxsoyad.Size = new System.Drawing.Size(218, 24);
+            this.textBoxsoyad.Size = new System.Drawing.Size(218, 21);
             this.textBoxsoyad.TabIndex = 17;
             this.textBoxsoyad.TextChanged += new System.EventHandler(this.textBoxsoyad_TextChanged);
             this.textBoxsoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxsoyad_KeyPress);
@@ -123,7 +123,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxemail.Location = new System.Drawing.Point(429, 273);
             this.textBoxemail.MaxLength = 30;
             this.textBoxemail.Name = "textBoxemail";
-            this.textBoxemail.Size = new System.Drawing.Size(91, 24);
+            this.textBoxemail.Size = new System.Drawing.Size(91, 21);
             this.textBoxemail.TabIndex = 19;
             this.textBoxemail.TextChanged += new System.EventHandler(this.textBoxemail_TextChanged);
             // 
@@ -134,7 +134,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxsifre.MaxLength = 15;
             this.textBoxsifre.Name = "textBoxsifre";
             this.textBoxsifre.PasswordChar = '*';
-            this.textBoxsifre.Size = new System.Drawing.Size(217, 24);
+            this.textBoxsifre.Size = new System.Drawing.Size(217, 21);
             this.textBoxsifre.TabIndex = 20;
             this.textBoxsifre.TextChanged += new System.EventHandler(this.textBoxsifre_TextChanged);
             // 
@@ -144,7 +144,7 @@ namespace OtoparkOtomasyonu.v2
             this.label2.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(220, 139);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 25);
+            this.label2.Size = new System.Drawing.Size(53, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Adınız";
             // 
@@ -154,7 +154,7 @@ namespace OtoparkOtomasyonu.v2
             this.label3.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(220, 180);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 25);
+            this.label3.Size = new System.Drawing.Size(75, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Soyadınız";
             // 
@@ -164,7 +164,7 @@ namespace OtoparkOtomasyonu.v2
             this.label4.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(220, 228);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 25);
+            this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "TEL NO";
             // 
@@ -174,7 +174,7 @@ namespace OtoparkOtomasyonu.v2
             this.label5.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(193, 273);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 25);
+            this.label5.Size = new System.Drawing.Size(99, 20);
             this.label5.TabIndex = 13;
             this.label5.Text = "E-mail adresi";
             // 
@@ -184,7 +184,7 @@ namespace OtoparkOtomasyonu.v2
             this.label6.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(220, 319);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 25);
+            this.label6.Size = new System.Drawing.Size(64, 20);
             this.label6.TabIndex = 21;
             this.label6.Text = "Şifreniz";
             // 
@@ -194,7 +194,7 @@ namespace OtoparkOtomasyonu.v2
             this.label7.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(220, 366);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 25);
+            this.label7.Size = new System.Drawing.Size(93, 20);
             this.label7.TabIndex = 23;
             this.label7.Text = "Şifre Tekrar";
             // 
@@ -205,7 +205,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxsifretekrar.MaxLength = 15;
             this.textBoxsifretekrar.Name = "textBoxsifretekrar";
             this.textBoxsifretekrar.PasswordChar = '*';
-            this.textBoxsifretekrar.Size = new System.Drawing.Size(214, 24);
+            this.textBoxsifretekrar.Size = new System.Drawing.Size(214, 21);
             this.textBoxsifretekrar.TabIndex = 22;
             this.textBoxsifretekrar.TextChanged += new System.EventHandler(this.textBoxsifretekrar_TextChanged);
             // 
@@ -232,7 +232,7 @@ namespace OtoparkOtomasyonu.v2
             "Admin"});
             this.comboBoxyetki.Location = new System.Drawing.Point(430, 415);
             this.comboBoxyetki.Name = "comboBoxyetki";
-            this.comboBoxyetki.Size = new System.Drawing.Size(217, 26);
+            this.comboBoxyetki.Size = new System.Drawing.Size(217, 23);
             this.comboBoxyetki.TabIndex = 25;
             this.comboBoxyetki.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -242,7 +242,7 @@ namespace OtoparkOtomasyonu.v2
             this.label8.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(220, 413);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 25);
+            this.label8.Size = new System.Drawing.Size(44, 20);
             this.label8.TabIndex = 26;
             this.label8.Text = "Yetki";
             // 
@@ -252,7 +252,7 @@ namespace OtoparkOtomasyonu.v2
             this.labeltckontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labeltckontrol.Location = new System.Drawing.Point(3, 2);
             this.labeltckontrol.Name = "labeltckontrol";
-            this.labeltckontrol.Size = new System.Drawing.Size(0, 18);
+            this.labeltckontrol.Size = new System.Drawing.Size(0, 15);
             this.labeltckontrol.TabIndex = 27;
             this.labeltckontrol.Click += new System.EventHandler(this.labeltckontrol_Click);
             // 
@@ -262,7 +262,7 @@ namespace OtoparkOtomasyonu.v2
             this.labeladkontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labeladkontrol.Location = new System.Drawing.Point(3, 44);
             this.labeladkontrol.Name = "labeladkontrol";
-            this.labeladkontrol.Size = new System.Drawing.Size(0, 18);
+            this.labeladkontrol.Size = new System.Drawing.Size(0, 15);
             this.labeladkontrol.TabIndex = 28;
             // 
             // labelsoyadkontrol
@@ -271,7 +271,7 @@ namespace OtoparkOtomasyonu.v2
             this.labelsoyadkontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelsoyadkontrol.Location = new System.Drawing.Point(3, 92);
             this.labelsoyadkontrol.Name = "labelsoyadkontrol";
-            this.labelsoyadkontrol.Size = new System.Drawing.Size(0, 18);
+            this.labelsoyadkontrol.Size = new System.Drawing.Size(0, 15);
             this.labelsoyadkontrol.TabIndex = 29;
             // 
             // labeltelnokontrol
@@ -280,7 +280,7 @@ namespace OtoparkOtomasyonu.v2
             this.labeltelnokontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labeltelnokontrol.Location = new System.Drawing.Point(3, 140);
             this.labeltelnokontrol.Name = "labeltelnokontrol";
-            this.labeltelnokontrol.Size = new System.Drawing.Size(0, 18);
+            this.labeltelnokontrol.Size = new System.Drawing.Size(0, 15);
             this.labeltelnokontrol.TabIndex = 30;
             // 
             // labelemailkontrol
@@ -289,7 +289,7 @@ namespace OtoparkOtomasyonu.v2
             this.labelemailkontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelemailkontrol.Location = new System.Drawing.Point(3, 183);
             this.labelemailkontrol.Name = "labelemailkontrol";
-            this.labelemailkontrol.Size = new System.Drawing.Size(0, 18);
+            this.labelemailkontrol.Size = new System.Drawing.Size(0, 15);
             this.labelemailkontrol.TabIndex = 31;
             // 
             // labelsifrekontrol
@@ -298,7 +298,7 @@ namespace OtoparkOtomasyonu.v2
             this.labelsifrekontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelsifrekontrol.Location = new System.Drawing.Point(3, 231);
             this.labelsifrekontrol.Name = "labelsifrekontrol";
-            this.labelsifrekontrol.Size = new System.Drawing.Size(0, 18);
+            this.labelsifrekontrol.Size = new System.Drawing.Size(0, 15);
             this.labelsifrekontrol.TabIndex = 32;
             // 
             // labelsifretekrarkontrol
@@ -307,7 +307,7 @@ namespace OtoparkOtomasyonu.v2
             this.labelsifretekrarkontrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelsifretekrarkontrol.Location = new System.Drawing.Point(3, 278);
             this.labelsifretekrarkontrol.Name = "labelsifretekrarkontrol";
-            this.labelsifretekrarkontrol.Size = new System.Drawing.Size(0, 18);
+            this.labelsifretekrarkontrol.Size = new System.Drawing.Size(0, 15);
             this.labelsifretekrarkontrol.TabIndex = 33;
             // 
             // labelyetkikontrol
@@ -317,9 +317,10 @@ namespace OtoparkOtomasyonu.v2
             this.labelyetkikontrol.ForeColor = System.Drawing.Color.Red;
             this.labelyetkikontrol.Location = new System.Drawing.Point(3, 321);
             this.labelyetkikontrol.Name = "labelyetkikontrol";
-            this.labelyetkikontrol.Size = new System.Drawing.Size(192, 18);
+            this.labelyetkikontrol.Size = new System.Drawing.Size(166, 15);
             this.labelyetkikontrol.TabIndex = 34;
             this.labelyetkikontrol.Text = "Bu alan boş bırakılamaz!";
+            this.labelyetkikontrol.Click += new System.EventHandler(this.labelyetkikontrol_Click);
             // 
             // panel1
             // 
@@ -335,6 +336,7 @@ namespace OtoparkOtomasyonu.v2
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(352, 346);
             this.panel1.TabIndex = 35;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button1
             // 
@@ -355,7 +357,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxtc.Location = new System.Drawing.Point(430, 95);
             this.textBoxtc.MaxLength = 11;
             this.textBoxtc.Name = "textBoxtc";
-            this.textBoxtc.Size = new System.Drawing.Size(217, 24);
+            this.textBoxtc.Size = new System.Drawing.Size(217, 21);
             this.textBoxtc.TabIndex = 15;
             this.textBoxtc.TextChanged += new System.EventHandler(this.textBoxtc_TextChanged);
             this.textBoxtc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxtc_KeyPress);
@@ -366,7 +368,7 @@ namespace OtoparkOtomasyonu.v2
             this.textBoxtelno.Location = new System.Drawing.Point(430, 228);
             this.textBoxtelno.Mask = "(###) ###-####";
             this.textBoxtelno.Name = "textBoxtelno";
-            this.textBoxtelno.Size = new System.Drawing.Size(217, 24);
+            this.textBoxtelno.Size = new System.Drawing.Size(217, 21);
             this.textBoxtelno.TabIndex = 55;
             this.textBoxtelno.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.textBoxtelno_MaskInputRejected);
             this.textBoxtelno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxtelno_KeyPress_1);
@@ -384,8 +386,9 @@ namespace OtoparkOtomasyonu.v2
             "@outlook.com"});
             this.comboBox1.Location = new System.Drawing.Point(526, 272);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 26);
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 56;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
             // 
             // errorProvider1
             // 
@@ -393,7 +396,7 @@ namespace OtoparkOtomasyonu.v2
             // 
             // FormKaydol
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1112, 536);

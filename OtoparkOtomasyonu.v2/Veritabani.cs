@@ -43,15 +43,6 @@ namespace OtoparkOtomasyonu.v2
                 }
                 command.Connection.Close();
             }
-            /*
-            DataBaseCommand(sorgu).Connection.Open();
-            reader = DataBaseCommand(sorgu).ExecuteReader();
-            while (reader.Read())
-            {
-                box.Items.Add(reader[sutunAdi]);
-            }
-            DataBaseCommand(sorgu).Connection.Close();
-            */
         }
 
         // 'MusteriBilgisi' tablosundan datagridView'a TÜM BİLGİLERİ ÇEKİYOR 
